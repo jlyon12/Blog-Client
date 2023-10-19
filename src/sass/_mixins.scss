@@ -1,0 +1,31 @@
+@use '/src/sass/variables' as *;
+
+// Breakpoints
+@mixin breakpoint-sm {
+	@media (min-width: #{$screen-sm-min}) {
+		@content;
+	}
+}
+
+@mixin breakpoint-md {
+	@media (min-width: #{$screen-md-min}) {
+		@content;
+	}
+}
+
+@mixin breakpoint-lg {
+	@media (min-width: #{$screen-lg-min}) {
+		@content;
+	}
+}
+
+@mixin breakpoint-xl {
+	@media (min-width: #{$screen-xl-min}) {
+		@content;
+	}
+}
+@mixin breakpoint-custom($screen) {
+	@media (min-width: $screen+'px') {
+		@content;
+	}
+}
