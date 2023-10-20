@@ -1,4 +1,5 @@
 @use './variables' as *;
+@use './mixins' as *;
 #root {
 	font-family: $ff-primary, $ff-system;
 	font-weight: $fw-regular;

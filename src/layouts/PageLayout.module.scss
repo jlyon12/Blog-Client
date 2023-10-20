@@ -1,0 +1,8 @@
+@use 'src/sass/index' as *;
+.app {
+	@include themify($themes) {
+		color: themed('text');
+		background-color: themed('bg');
+	}
+	min-height: 100vh;
+}

@@ -6,7 +6,11 @@
 	align-items: center;
 	font-size: $fs-md;
 	padding: $padding-5;
-
+	nav {
+		display: flex;
+		align-items: center;
+		gap: $gap-4;
+	}
 	p {
 		font-weight: $fw-semibold;
 		margin: $margin-2;

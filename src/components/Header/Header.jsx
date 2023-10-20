@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
-
+import useDarkModeContext from 'src/hooks/useDarkModeContext';
 const Header = () => {
+	const { toggleDarkMode } = useDarkModeContext();
 	return (
 		<header className={styles.header}>
 			<div className={styles.navContainer}>
@@ -21,6 +22,7 @@ const Header = () => {
 							<Link>Newsletter</Link>
 						</li>
 					</ul>
+					<button onClick={toggleDarkMode}>Theme</button>
 				</nav>
 			</div>
 			<div className={styles.heroContainer}>
