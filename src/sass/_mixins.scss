@@ -50,3 +50,36 @@
 		}
 	}
 }
+
+@mixin link-reset {
+	text-decoration: none;
+	color: inherit;
+}
+
+@mixin nav-link {
+	@include link-reset;
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: underline;
+		text-underline-offset: $gap-1;
+	}
+}
+
+@mixin list-reset {
+	padding: 0;
+	margin: 0;
+	li {
+		list-style-type: none;
+	}
+}
+@mixin list-horizontal($gap) {
+	display: flex;
+	gap: $gap;
+}
+
+@mixin list-vertical($gap) {
+	display: flex;
+	flex-direction: column;
+	gap: $gap;
+}

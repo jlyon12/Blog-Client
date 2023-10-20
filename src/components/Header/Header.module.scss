@@ -1,0 +1,51 @@
+@use '/src/sass/index.scss' as *;
+
+.navContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: $fs-md;
+	padding: $padding-5;
+
+	p {
+		font-weight: $fw-semibold;
+		margin: $margin-2;
+	}
+
+	ul {
+		@include list-reset;
+		@include list-horizontal($gap-4);
+	}
+
+	a {
+		@include nav-link;
+		margin: $margin-2;
+	}
+}
+
+.heroContainer {
+	@include themify($themes) {
+		border-top: 1px solid themed('heroBorder');
+		border-bottom: 1px solid themed('heroBorder');
+	}
+
+	container-type: inline-size;
+
+	h1 {
+		text-align: center;
+		margin: 0 $margin-5;
+		font-size: $fs-2xl;
+		text-transform: uppercase;
+		font-weight: $fw-xbold;
+	}
+	@container (min-width: 768px) {
+		h1 {
+			font-size: $fs-5xl;
+		}
+	}
+	@container (min-width: 1200px) {
+		h1 {
+			font-size: $fs-8xl;
+		}
+	}
+}
