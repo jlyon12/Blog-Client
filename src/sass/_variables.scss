@@ -21,6 +21,35 @@ $fs-base: 1rem;
 $fs-md: 1.125rem;
 $fs-lg: 1.5rem;
 
+//Colors
+
+$clr-bg-light: #ffffff;
+$clr-text-light: #1a1a1a;
+$clr-text-alternate-light: #667085;
+$clr-text-accent-light: #6941c6;
+
+$clr-bg-dark: #090d1f;
+$clr-text-dark: #fff;
+$clr-text-alternate-dark: #c0c5d0;
+$clr-text-accent-dark: #6941c6;
+
+// Theme Configuration
+
+$themes: (
+	light: (
+		bg: $clr-bg-light,
+		text: $clr-text-light,
+		textAlt: $clr-text-alternate-light,
+		textAccent: $clr-text-accent-light,
+	),
+	dark: (
+		bg: $clr-bg-dark,
+		text: $clr-text-dark,
+		textAlt: $clr-text-alternate-dark,
+		textAccent: $clr-text-accent-dark,
+	),
+);
+
 // Breakpoints
 
 $screen-sm-min: 576px;

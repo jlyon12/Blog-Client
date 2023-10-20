@@ -25,7 +25,28 @@
 	}
 }
 @mixin breakpoint-custom($screen) {
-	@media (min-width: $screen+'px') {
+	@media (min-width: $screen) {
 		@content;
+	}
+}
+
+// Theme
+@mixin themify($themes: $themes) {
+	@each $theme, $map in $themes {
+		:global(.theme-#{$theme}) & {
+			$theme-map: () !global;
+			@each $key, $submap in $map {
+				$value: map-get(map-get($themes, $theme), '#{$key}');
+				$theme-map: map-merge(
+					$theme-map,
+					(
+						$key: $value,
+					)
+				) !global;
+			}
+
+			@content;
+			$theme-map: null !global;
+		}
 	}
 }
