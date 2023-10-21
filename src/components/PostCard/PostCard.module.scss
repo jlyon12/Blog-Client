@@ -1,0 +1,27 @@
+@use '/src/sass/index.scss' as *;
+
+.post {
+	display: grid;
+	gap: $gap-3;
+	margin-bottom: calc($margin-4 * 2);
+	.date {
+		@include themify($themes) {
+			color: themed('textAccent');
+		}
+		font-size: $fs-sm;
+		font-weight: $fw-bold;
+	}
+	.title {
+		@include themify($themes) {
+			color: themed('text');
+		}
+		font-size: $fs-md;
+		font-weight: $fw-bold;
+	}
+	.body {
+		@include themify($themes) {
+			color: themed('textAlt');
+		}
+		text-overflow: ellipsis;
+	}
+}
