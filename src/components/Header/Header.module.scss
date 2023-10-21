@@ -37,10 +37,10 @@
 
 	h1 {
 		text-align: center;
-		margin: 0 $margin-5;
 		font-size: $fs-2xl;
 		text-transform: uppercase;
 		font-weight: $fw-xbold;
+		line-height: 100%;
 	}
 	@container (min-width: 768px) {
 		h1 {

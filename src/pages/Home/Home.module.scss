@@ -1,0 +1,39 @@
+@use '/src/sass/index.scss' as *;
+
+.main {
+	padding: calc($padding-4 * 2);
+}
+.sectionTitle {
+	@include themify($themes) {
+		color: themed('text');
+	}
+	font-size: $fs-md;
+	font-weight: $fw-bold;
+	margin-bottom: calc($margin-4 * 2);
+}
+
+.post {
+	display: grid;
+	gap: $gap-3;
+	margin-bottom: calc($margin-4 * 2);
+	&Date {
+		@include themify($themes) {
+			color: themed('textAccent');
+		}
+		font-size: $fs-sm;
+		font-weight: $fw-bold;
+	}
+	&Title {
+		@include themify($themes) {
+			color: themed('text');
+		}
+		font-size: $fs-md;
+		font-weight: $fw-bold;
+	}
+	&Body {
+		@include themify($themes) {
+			color: themed('textAlt');
+		}
+		text-overflow: ellipsis;
+	}
+}
