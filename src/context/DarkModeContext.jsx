@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 const DarkModeContext = createContext();
 
 const DarkModeContextProvider = ({ children }) => {
-	const [darkMode, setDarkMode] = useState(true);
+	const [darkMode, setDarkMode] = useState(false);
 	const toggleDarkMode = () => {
 		setDarkMode(!darkMode);
 	};
