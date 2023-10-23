@@ -11,12 +11,26 @@
 		font-size: $fs-sm;
 		font-weight: $fw-bold;
 	}
-	.title {
+	.titleContainer {
+		@include link-reset;
 		@include themify($themes) {
 			color: themed('text');
 		}
 		font-size: $fs-md;
 		font-weight: $fw-bold;
+		display: flex;
+		gap: $gap-4;
+
+		.title {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		.arrowIcon {
+			flex-shrink: 0;
+			position: relative;
+			top: 0.25em;
+		}
 	}
 	.body {
 		@include themify($themes) {

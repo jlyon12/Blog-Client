@@ -1,0 +1,54 @@
+@use '/src/sass/index.scss' as *;
+
+.contentWrapper {
+	display: grid;
+	grid-template-areas: 'blog' 'recent';
+
+	padding-inline: $padding-4;
+	margin-top: calc($margin-4 * 2);
+	gap: calc($gap-4 * 2);
+	@include breakpoint-md {
+		grid-template-areas: 'recent blog';
+		grid-template-columns: 1fr 3fr;
+	}
+
+	.sectionTitle {
+		margin-bottom: calc($margin-2);
+	}
+
+	.blogWrapper {
+		grid-area: blog;
+	}
+	.recentPosts {
+		grid-area: recent;
+	}
+}
+
+.blog {
+	display: flex;
+	flex-direction: column;
+	gap: calc($gap-4 * 2);
+	.date {
+		@include themify($themes) {
+			color: themed('textAccent');
+		}
+		font-size: $fs-sm;
+		font-weight: $fw-semibold;
+	}
+	.title {
+		@include link-reset;
+		@include themify($themes) {
+			color: themed('text');
+		}
+		font-size: $fs-lg;
+		font-weight: $fw-bold;
+	}
+	.body {
+		@include themify($themes) {
+			color: themed('textAlt');
+		}
+		display: flex;
+		flex-direction: column;
+		gap: $gap-4;
+	}
+}
