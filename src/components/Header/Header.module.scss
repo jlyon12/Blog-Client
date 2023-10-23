@@ -1,16 +1,12 @@
 @use '/src/sass/index.scss' as *;
 
 .navContainer {
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	font-size: $fs-md;
 	padding: $padding-5;
-	nav {
-		display: flex;
-		align-items: center;
-		gap: $gap-4;
-	}
 	p {
 		font-weight: $fw-semibold;
 		margin: $margin-2;
@@ -18,12 +14,88 @@
 
 	ul {
 		@include list-reset;
-		@include list-horizontal($gap-4);
+		@include list-vertical(calc($gap-4 * 2));
+		justify-content: center;
+		align-items: center;
+		@include breakpoint-md {
+			flex-direction: row;
+		}
 	}
 
 	a {
 		@include nav-link;
 		margin: $margin-2;
+	}
+	.menuBtn {
+		@include btn-reset;
+		margin-left: auto;
+		display: block;
+
+		@include breakpoint-md {
+			display: none;
+		}
+	}
+	.mobileMenuTitle {
+		display: block;
+		@include breakpoint-md {
+			display: none;
+		}
+		margin-top: auto;
+	}
+	.menuClose {
+		@include btn-reset;
+		@include breakpoint-md {
+			display: none;
+		}
+		margin-top: auto;
+		margin-bottom: 2rem;
+	}
+
+	.navMenu {
+		@include themify($themes) {
+			color: themed('text');
+			background-color: themed('bg');
+		}
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: calc(2 * $gap-4);
+	}
+
+	.mobileMenu {
+		position: absolute;
+		flex-direction: column;
+
+		width: 100%;
+		height: 100vh;
+		filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
+			drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+		z-index: 10;
+		left: 0;
+		top: 0;
+		@include breakpoint-md {
+			position: relative;
+			height: auto;
+			flex-direction: row;
+			filter: none;
+		}
+	}
+
+	.desktopMenu {
+		overflow: hidden;
+		visibility: hidden;
+		opacity: 0;
+		width: 0;
+		height: 0px;
+		@include breakpoint-md {
+			display: flex;
+			opacity: 1;
+			visibility: visible;
+			width: auto;
+			height: auto;
+			flex-direction: row;
+		}
 	}
 }
 
