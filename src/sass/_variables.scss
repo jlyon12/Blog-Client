@@ -32,12 +32,18 @@ $clr-text-light: #1a1a1a;
 $clr-text-alternate-light: #667085;
 $clr-text-accent-light: #6941c6;
 $clr-hero-border-light: #1a1a1a;
+$clr-input-border-light: #667085;
+$clr-btn-bg-light: #6941c6;
+$clr-btn-text-light: #ffffff;
 
 $clr-bg-dark: #090d1f;
 $clr-text-dark: #fff;
 $clr-text-alternate-dark: #c0c5d0;
 $clr-text-accent-dark: #6941c6;
 $clr-hero-border-dark: #ffffff;
+$clr-btn-bg-dark: #6941c6;
+$clr-btn-text-dark: #ffffff;
+$clr-input-border-dark: #667085;
 
 // Theme Configuration
 
@@ -48,6 +54,9 @@ $themes: (
 		textAlt: $clr-text-alternate-light,
 		textAccent: $clr-text-accent-light,
 		heroBorder: $clr-hero-border-light,
+		btnBg: $clr-btn-bg-light,
+		btnText: $clr-btn-text-light,
+		inputBorder: $clr-input-border-light,
 	),
 	dark: (
 		bg: $clr-bg-dark,
@@ -55,6 +64,9 @@ $themes: (
 		textAlt: $clr-text-alternate-dark,
 		textAccent: $clr-text-accent-dark,
 		heroBorder: $clr-hero-border-dark,
+		btnBg: $clr-btn-bg-dark,
+		btnText: $clr-btn-text-dark,
+		inputBorder: $clr-input-border-dark,
 	),
 );
 

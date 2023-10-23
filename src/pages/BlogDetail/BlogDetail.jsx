@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { format } from 'date-fns';
 import PostCard from 'src/components/PostCard/PostCard';
+import NewsLetterCTA from 'src/components/NewsLetterCTA/NewsLetterCTA';
 
 import styles from './BlogDetail.module.scss';
 const Home = () => {
@@ -22,7 +23,6 @@ const Home = () => {
 			const res = await fetch(`http://localhost:3000/api/posts/${id}`);
 
 			const json = await res.json();
-			console.log(json);
 			if (res.ok) {
 				setBlog(json);
 			}
@@ -53,6 +53,7 @@ const Home = () => {
 							/>
 						</div>
 					)}
+					<NewsLetterCTA />
 				</section>
 			</div>
 		</main>

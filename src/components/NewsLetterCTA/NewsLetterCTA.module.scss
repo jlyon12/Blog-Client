@@ -1,0 +1,89 @@
+@use '/src/sass/index' as *;
+
+.ctaContainer {
+	display: grid;
+	justify-items: center;
+	text-align: center;
+}
+
+.subHeading {
+	@include themify($themes) {
+		color: themed('textAccent');
+	}
+	font-weight: $fw-semibold;
+	margin-bottom: $margin-3;
+}
+.heading {
+	font-size: calc($fs-base * 3);
+	font-weight: $fw-semibold;
+	line-height: 60px;
+	letter-spacing: -0.96px;
+	margin-bottom: calc($margin-4 * 1.5);
+}
+.subText {
+	@include themify($themes) {
+		color: themed('textAlt');
+	}
+	font-size: calc($fs-base * 1.25);
+	line-height: 30px;
+	margin-bottom: 40px;
+}
+.privacyText {
+	font-size: $fs-sm;
+	line-height: 20px;
+	grid-row: 2/3;
+	align-self: start;
+
+	@include themify($themes) {
+		color: themed('textAlt');
+	}
+	a {
+		@include link-reset;
+		text-decoration: underline;
+		&:hover {
+			@include themify($themes) {
+				color: themed('textAccent');
+			}
+		}
+	}
+}
+
+.form {
+	display: grid;
+	gap: $gap-2;
+	grid-template: 1fr 1fr / auto auto;
+	align-items: center;
+	fieldset {
+		border: 0;
+		padding: 0;
+	}
+	label {
+		padding: 0;
+	}
+	input[type='email'] {
+		width: 0;
+		min-width: 100%;
+		padding: $padding-3 $padding-4;
+		border-radius: 8px;
+		border: transparent;
+		box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+		@include themify($themes) {
+			border: 1px solid themed('inputBorder');
+		}
+	}
+}
+
+.btn {
+	@include btn-primary;
+	@include themify($themes) {
+		color: themed('btnText');
+		background-color: themed('btnBg');
+		border: 1px solid themed('btnBg');
+	}
+
+	&:disabled {
+		background-color: rgb(40, 182, 40);
+		border: rgb(40, 182, 40);
+		cursor: not-allowed;
+	}
+}
