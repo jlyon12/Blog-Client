@@ -1,0 +1,30 @@
+@use '/src/sass/index.scss' as *;
+
+.footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: calc($gap-4 * 2);
+	margin-top: calc($gap-4 * 2);
+	padding-bottom: calc($gap-4 * 2);
+	margin-inline: calc($gap-4 * 2);
+
+	@include breakpoint-md {
+		flex-direction: row-reverse;
+		justify-content: flex-end;
+		gap: $gap-4;
+	}
+	.listContainer {
+		align-items: center;
+		@include list-reset;
+		@include list-vertical($gap-4);
+		@include breakpoint-md {
+			flex-direction: row;
+		}
+	}
+}
+
+.link {
+	@include link-reset;
+}
