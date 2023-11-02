@@ -1,12 +1,18 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdOutlineMenu, MdClose } from 'react-icons/md';
-import styles from './Header.module.scss';
+import useAuthContext from 'src/hooks/useAuthContext';
 import useDarkModeContext from 'src/hooks/useDarkModeContext';
 import ThemeToggleSwitch from 'src/components/ToggleSwitch/ThemeToggleSwitch';
+import useLogout from 'src/hooks/useLogout';
+
+import styles from './Header.module.scss';
+
 const Header = () => {
 	const { darkMode, toggleDarkMode } = useDarkModeContext();
 	const [isOpen, setIsOpen] = useState(false);
+	const { user } = useAuthContext();
+	const { logout } = useLogout();
 	const toggleNav = () => {
 		setIsOpen(!isOpen);
 	};
@@ -37,6 +43,15 @@ const Header = () => {
 							<li>
 								<Link>Newsletter</Link>
 							</li>
+							{!user ? (
+								<li>
+									<Link to="/login">Login</Link>
+								</li>
+							) : (
+								<li>
+									<button onClick={logout}>Logout</button>
+								</li>
+							)}
 						</ul>
 						<ThemeToggleSwitch
 							label="darkModeToggle"

@@ -66,6 +66,16 @@
 	}
 }
 
+@mixin link {
+	@include link-reset;
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: underline;
+		text-underline-offset: $gap-1;
+	}
+}
+
 @mixin btn-reset {
 	-webkit-appearance: none;
 	border-radius: 0;
@@ -87,9 +97,23 @@
 	&:hover,
 	&:focus,
 	&:active {
-		opacity: 0.85;
+		transform: scale(1.05);
+		font-weight: $fw-semibold;
 	}
 }
+@mixin btn-secondary {
+	@include btn-reset;
+	padding: $padding-1 $padding-2;
+	border-radius: 8px;
+	box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+	&:hover,
+	&:focus,
+	&:active {
+		transform: scale(1.05);
+		font-weight: $fw-semibold;
+	}
+}
+
 @mixin list-reset {
 	padding: 0;
 	margin: 0;

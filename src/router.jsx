@@ -1,16 +1,26 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+	createBrowserRouter,
+	RouterProvider,
+	Navigate,
+} from 'react-router-dom';
+
+import useAuthContext from 'src/hooks/useAuthContext';
 
 import PageLayout from 'src/layouts/PageLayout';
 import Home from 'src/pages/Home/Home';
+import Login from 'src/pages/Login/Login';
 import BlogDetail from 'src/pages/BlogDetail/BlogDetail';
 
 const Router = () => {
+	const { user } = useAuthContext();
+
 	const router = createBrowserRouter([
 		{
 			path: '/',
 			element: <PageLayout />,
 			children: [
 				{ index: true, element: <Home /> },
+				{ path: 'login', element: user ? <Navigate to="/" /> : <Login /> },
 				{ path: '/posts/:id', element: <BlogDetail /> },
 			],
 		},
