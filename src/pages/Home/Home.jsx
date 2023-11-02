@@ -7,7 +7,9 @@ const Home = () => {
 
 	useEffect(() => {
 		const fetchPublicPosts = async () => {
-			const res = await fetch('http://localhost:3000/api/posts/published');
+			const res = await fetch(
+				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/`
+			);
 
 			const json = await res.json();
 

@@ -11,7 +11,9 @@ const Home = () => {
 	const { id } = useParams();
 	useEffect(() => {
 		const fetchPublicPosts = async () => {
-			const res = await fetch('http://localhost:3000/api/posts/published');
+			const res = await fetch(
+				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/`
+			);
 
 			const json = await res.json();
 
@@ -20,7 +22,9 @@ const Home = () => {
 			}
 		};
 		const fetchSinglePost = async () => {
-			const res = await fetch(`http://localhost:3000/api/posts/${id}`);
+			const res = await fetch(
+				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/${id}`
+			);
 
 			const json = await res.json();
 			if (res.ok) {
@@ -40,18 +44,21 @@ const Home = () => {
 				</section>
 				<section className={styles.blogWrapper}>
 					{blog && (
-						<div key={blog._id} className={styles.blog}>
-							<p className={styles.date}>
-								{format(new Date(blog.createdAt), 'PPPP')}
-							</p>
-							<h3 className={styles.title}>{blog.title}</h3>
-							<div
-								className={styles.body}
-								dangerouslySetInnerHTML={{
-									__html: blog.body,
-								}}
-							/>
-						</div>
+						<>
+							<div key={blog._id} className={styles.blog}>
+								<p className={styles.date}>
+									{format(new Date(blog.createdAt), 'PPPP')}
+								</p>
+								<h3 className={styles.title}>{blog.title}</h3>
+								<div
+									className={styles.body}
+									dangerouslySetInnerHTML={{
+										__html: blog.body,
+									}}
+								/>
+							</div>
+							<div></div>
+						</>
 					)}
 					<NewsLetterCTA />
 				</section>

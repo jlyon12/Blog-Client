@@ -25,17 +25,20 @@ const useSignup = () => {
 			return;
 		}
 
-		const res = await fetch('http://localhost:3000/api/user/signup', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				first_name: firstName,
-				last_name: lastName,
-				username,
-				email,
-				password,
-			}),
-		});
+		const res = await fetch(
+			`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/user/signup`,
+			{
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					first_name: firstName,
+					last_name: lastName,
+					username,
+					email,
+					password,
+				}),
+			}
+		);
 
 		const json = await res.json();
 
