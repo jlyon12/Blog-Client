@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { BarLoader } from 'react-spinners';
 import useLogin from 'src/hooks/useLogin';
 import styles from './Login.module.scss';
@@ -48,6 +49,9 @@ const Login = () => {
 				/>
 				{error && <p className={styles.error}>{error}</p>}
 			</form>
+			<p className={styles.signup}>
+				Dont have an account? <Link to="/signup">Signup</Link>
+			</p>
 		</main>
 	);
 };

@@ -7,6 +7,9 @@
 	padding-inline: $padding-4;
 	margin-top: calc($margin-4 * 2);
 	gap: calc($gap-4 * 2);
+	@include breakpoint-md {
+		padding-inline: calc($padding-4 * 2);
+	}
 	@include breakpoint-lg {
 		grid-template-areas: 'recent blog';
 		grid-template-columns: 1fr 3fr;

@@ -10,6 +10,7 @@ import PageLayout from 'src/layouts/PageLayout';
 import NotFound from './pages/NotFound/NotFound';
 import Home from 'src/pages/Home/Home';
 import Login from 'src/pages/Login/Login';
+import Signup from './pages/Signup/Signup';
 import BlogDetail from 'src/pages/BlogDetail/BlogDetail';
 
 const Router = () => {
@@ -22,6 +23,7 @@ const Router = () => {
 			children: [
 				{ index: true, element: <Home /> },
 				{ path: 'login', element: user ? <Navigate to="/" /> : <Login /> },
+				{ path: 'signup', element: user ? <Navigate to="/" /> : <Signup /> },
 				{ path: '/posts/:id', element: <BlogDetail /> },
 				{ path: '*', element: <NotFound /> },
 			],
