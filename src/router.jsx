@@ -7,6 +7,7 @@ import {
 import useAuthContext from 'src/hooks/useAuthContext';
 
 import PageLayout from 'src/layouts/PageLayout';
+import NotFound from './pages/NotFound/NotFound';
 import Home from 'src/pages/Home/Home';
 import Login from 'src/pages/Login/Login';
 import BlogDetail from 'src/pages/BlogDetail/BlogDetail';
@@ -22,6 +23,7 @@ const Router = () => {
 				{ index: true, element: <Home /> },
 				{ path: 'login', element: user ? <Navigate to="/" /> : <Login /> },
 				{ path: '/posts/:id', element: <BlogDetail /> },
+				{ path: '*', element: <NotFound /> },
 			],
 		},
 	]);
