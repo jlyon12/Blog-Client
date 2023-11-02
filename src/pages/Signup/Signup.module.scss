@@ -8,7 +8,7 @@
 .form {
 	display: grid;
 	gap: $gap-4;
-	align-items: center;
+	place-items: center;
 	legend {
 		visibility: hidden;
 	}
@@ -59,20 +59,6 @@
 .error {
 	text-align: center;
 	letter-spacing: 0.25px;
-	font-size: $fs-md;
 	color: #dd1155;
-}
-
-.signup {
-	margin-top: $margin-4;
-	font-weight: $fw-semibold;
-	@include themify($themes) {
-		color: themed(textAlt);
-	}
-	a {
-		@include link;
-		@include themify($themes) {
-			color: themed(textAccent);
-		}
-	}
+	margin: $margin-4 calc($margin-4 * 2);
 }
