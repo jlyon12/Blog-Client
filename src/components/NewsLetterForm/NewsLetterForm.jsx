@@ -1,6 +1,6 @@
-import styles from './NewsLetterCTA.module.scss';
+import styles from './NewsLetterForm.module.scss';
 import { useState } from 'react';
-const NewsLetterCTA = () => {
+const NewsLetterForm = () => {
 	const [email, setEmail] = useState('');
 	const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -41,4 +41,4 @@ const NewsLetterCTA = () => {
 	);
 };
 
-export default NewsLetterCTA;
+export default NewsLetterForm;
