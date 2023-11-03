@@ -33,7 +33,7 @@ const Home = () => {
 				<h2 className={styles.sectionTitle}>All Blog Posts</h2>
 				{publicPosts &&
 					publicPosts
-						.slice(3, -1)
+						.slice(3)
 						.map((post) => <PostCard key={post._id} post={post} />)}
 			</section>
 		</main>
