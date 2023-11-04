@@ -1,0 +1,57 @@
+@use 'src/sass/index.scss' as *;
+.commentSection {
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: $gap-4;
+	padding: $padding-4;
+	@include themify($themes) {
+		border: 2px solid themed(inputBorder);
+	}
+	.noUser {
+		margin: 0 auto;
+		a {
+			@include link;
+
+			text-decoration: underline;
+			@include themify($themes) {
+				color: themed(textAlt);
+			}
+		}
+	}
+	hr {
+		border: 0;
+		@include themify($themes) {
+			border-top: 0.5px solid themed('inputBg');
+		}
+	}
+}
+.querySelectors {
+	display: flex;
+	gap: $gap-4;
+	align-items: center;
+	justify-content: flex-end;
+	label[for='limit'] {
+		display: flex;
+		gap: $gap-2;
+		align-items: center;
+	}
+	.toggleContainer {
+		display: flex;
+		align-items: center;
+		gap: $gap-2;
+		// margin-left: auto;
+	}
+}
+
+.pageNavigation {
+	display: flex;
+	justify-content: space-between;
+	.nextBtn {
+		margin-left: auto;
+	}
+	button {
+		@include btn-reset;
+		@include link;
+	}
+}

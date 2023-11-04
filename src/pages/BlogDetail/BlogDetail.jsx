@@ -1,31 +1,14 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import PostCard from 'src/components/PostCard/PostCard';
-import Comment from 'src/components/Comment/Comment';
-import CommentForm from 'src/components/CommentForm/CommentForm';
+import CommentSection from 'src/components/CommentSection/CommentSection';
 import NewsLetterForm from 'src/components/NewsLetterForm/NewsLetterForm';
-import useAuthContext from 'src/hooks/useAuthContext';
-
 import styles from './BlogDetail.module.scss';
 const BlogDetail = () => {
 	const [posts, setPosts] = useState(null);
 	const [post, setPost] = useState(null);
-	const [comments, setComments] = useState(null);
 	const { id } = useParams();
-	const { user } = useAuthContext();
-
-	const fetchComments = useCallback(async () => {
-		const res = await fetch(
-			`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/${id}/comments`
-		);
-
-		const json = await res.json();
-		if (res.ok) {
-			setComments(json);
-		}
-	}, [id]);
 
 	useEffect(() => {
 		const fetchPosts = async () => {
@@ -52,8 +35,7 @@ const BlogDetail = () => {
 
 		fetchSinglePost();
 		fetchPosts();
-		fetchComments();
-	}, [fetchComments, id]);
+	}, [id]);
 	return (
 		<main className={styles.main}>
 			<div className={styles.contentWrapper}>
@@ -77,23 +59,7 @@ const BlogDetail = () => {
 									}}
 								/>
 							</div>
-							<div className={styles.commentSection}>
-								<h3>Comments</h3>
-								{comments &&
-									comments.map((comment) => (
-										<Comment key={comment._id} comment={comment} />
-									))}
-								{user ? (
-									<CommentForm
-										postId={post._id}
-										fetchComments={fetchComments}
-									/>
-								) : (
-									<p className={styles.noUser}>
-										Please <Link to="/login">Log In</Link> to leave a comment
-									</p>
-								)}
-							</div>
+							<CommentSection post={post} />
 						</>
 					)}
 					<NewsLetterForm />
