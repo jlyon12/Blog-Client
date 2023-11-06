@@ -14,7 +14,7 @@ const Home = () => {
 			const json = await res.json();
 
 			if (res.ok) {
-				setPublicPosts(json);
+				setPublicPosts(json.data);
 			}
 		};
 

@@ -5,6 +5,7 @@ import PostCard from 'src/components/PostCard/PostCard';
 import CommentSection from 'src/components/CommentSection/CommentSection';
 import NewsLetterForm from 'src/components/NewsLetterForm/NewsLetterForm';
 import styles from './BlogDetail.module.scss';
+
 const BlogDetail = () => {
 	const [posts, setPosts] = useState(null);
 	const [post, setPost] = useState(null);
@@ -19,7 +20,7 @@ const BlogDetail = () => {
 			const json = await res.json();
 
 			if (res.ok) {
-				setPosts(json);
+				setPosts(json.data);
 			}
 		};
 		const fetchSinglePost = async () => {
@@ -29,7 +30,7 @@ const BlogDetail = () => {
 
 			const json = await res.json();
 			if (res.ok) {
-				setPost(json);
+				setPost(json.data);
 			}
 		};
 

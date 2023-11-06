@@ -47,7 +47,14 @@ const Login = () => {
 					className={styles.spinner}
 					loading={isLoading}
 				/>
-				{error && <p className={styles.error}>{error}</p>}
+				{error &&
+					error.map((error) => {
+						return (
+							<p key={error} className={styles.error}>
+								{error.detail}
+							</p>
+						);
+					})}
 			</form>
 			<p className={styles.signup}>
 				Dont have an account? <Link to="/signup">Signup</Link>

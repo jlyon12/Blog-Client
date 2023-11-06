@@ -44,9 +44,8 @@ const CommentSection = ({ post }) => {
 		);
 
 		const json = await res.json();
-		console.log(json);
 		if (res.ok) {
-			setComments(json);
+			setComments(json.data);
 		}
 	}, [id, limit, skip, sort]);
 

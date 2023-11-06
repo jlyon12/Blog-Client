@@ -21,7 +21,7 @@ const useSignup = () => {
 
 		if (password !== passwordConfirm) {
 			setIsLoading(false);
-			setError('Passwords do not match');
+			setError([{ status: 422, detail: 'Passwords do not match' }]);
 			return;
 		}
 
@@ -41,16 +41,16 @@ const useSignup = () => {
 		);
 
 		const json = await res.json();
-
+		console.log(json);
 		if (!res.ok) {
 			setIsLoading(false);
-			setError(json.err);
+			setError(json.errors);
 		}
 
 		if (res.ok) {
-			localStorage.setItem('user', JSON.stringify(json));
+			localStorage.setItem('user', JSON.stringify(json.data));
 
-			dispatch({ type: 'LOGIN', payload: json });
+			dispatch({ type: 'LOGIN', payload: json.data });
 			setIsLoading(false);
 			navigate('/');
 		}
