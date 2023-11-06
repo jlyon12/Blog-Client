@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import DOMPurify from 'dompurify';
 import { format } from 'date-fns';
 import PostCard from 'src/components/PostCard/PostCard';
 import CommentSection from 'src/components/CommentSection/CommentSection';
@@ -55,8 +56,9 @@ const BlogDetail = () => {
 								<h3 className={styles.title}>{post.title}</h3>
 								<div
 									className={styles.body}
+									// eslint-disable-next-line react/no-danger
 									dangerouslySetInnerHTML={{
-										__html: post.body,
+										__html: DOMPurify.sanitize(post.body),
 									}}
 								/>
 							</div>

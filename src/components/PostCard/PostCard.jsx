@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { RiArrowRightUpLine } from 'react-icons/ri';
+import DOMPurify from 'dompurify';
 import propTypes from 'prop-types';
 import { format } from 'date-fns';
 import styles from './PostCard.module.scss';
@@ -16,7 +17,10 @@ const PostCard = ({ post }) => {
 			</Link>
 			<div
 				className={styles.body}
-				dangerouslySetInnerHTML={{ __html: truncate(post.body.split('.')[0]) }}
+				// eslint-disable-next-line react/no-danger
+				dangerouslySetInnerHTML={{
+					__html: DOMPurify.sanitize(truncate(post.body.split('.')[0])),
+				}}
 			/>
 		</div>
 	);

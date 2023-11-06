@@ -17,6 +17,7 @@ module.exports = {
 			'warn',
 			{ allowConstantExport: true },
 		],
+		'react/no-danger': 'warn',
 		'prettier/prettier': 'error',
 	},
 };
