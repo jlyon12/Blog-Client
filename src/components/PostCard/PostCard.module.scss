@@ -38,4 +38,10 @@
 		}
 		text-overflow: ellipsis;
 	}
+
+	.footer {
+		display: flex;
+		gap: $gap-4;
+		align-items: center;
+	}
 }

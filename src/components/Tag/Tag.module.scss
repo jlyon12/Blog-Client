@@ -1,0 +1,13 @@
+@use 'src/sass/index.scss' as *;
+
+.tag {
+	@include badge;
+	@include themify($themes) {
+		background-color: themed(badgeBg);
+		color: themed(badgeText);
+	}
+	font-size: $fs-sm;
+	font-weight: $fw-semibold;
+	line-height: 20px;
+	width: fit-content;
+}

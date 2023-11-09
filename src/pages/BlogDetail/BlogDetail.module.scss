@@ -55,4 +55,10 @@
 		flex-direction: column;
 		gap: $gap-4;
 	}
+
+	.footer {
+		display: flex;
+		gap: $gap-4;
+		align-items: center;
+	}
 }

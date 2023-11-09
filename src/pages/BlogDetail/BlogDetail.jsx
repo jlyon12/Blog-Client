@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import DOMPurify from 'dompurify';
 import { format } from 'date-fns';
 import PostCard from 'src/components/PostCard/PostCard';
+import Tag from 'src/components/Tag/Tag';
 import CommentSection from 'src/components/CommentSection/CommentSection';
 import NewsLetterForm from 'src/components/NewsLetterForm/NewsLetterForm';
 import styles from './BlogDetail.module.scss';
@@ -61,6 +62,11 @@ const BlogDetail = () => {
 										__html: DOMPurify.sanitize(post.body),
 									}}
 								/>
+								<div className={styles.footer}>
+									{post.tags.map((tag) => (
+										<Tag key={post._id + tag} tag={tag} />
+									))}
+								</div>
 							</div>
 							<CommentSection post={post} />
 						</>

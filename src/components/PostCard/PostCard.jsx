@@ -3,6 +3,7 @@ import { RiArrowRightUpLine } from 'react-icons/ri';
 import DOMPurify from 'dompurify';
 import propTypes from 'prop-types';
 import { format } from 'date-fns';
+import Tag from 'src/components/Tag/Tag';
 import styles from './PostCard.module.scss';
 const PostCard = ({ post }) => {
 	const truncate = (text) => {
@@ -22,6 +23,11 @@ const PostCard = ({ post }) => {
 					__html: DOMPurify.sanitize(truncate(post.body.split('.')[0])),
 				}}
 			/>
+			<div className={styles.footer}>
+				{post.tags.map((tag) => (
+					<Tag key={post._id + tag} tag={tag} />
+				))}
+			</div>
 		</div>
 	);
 };
@@ -32,6 +38,7 @@ PostCard.propTypes = {
 		title: propTypes.string,
 		body: propTypes.string,
 		createdAt: propTypes.string,
+		tags: propTypes.array,
 	}),
 };
 
