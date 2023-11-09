@@ -20,6 +20,7 @@ const Login = () => {
 				<fieldset>
 					<label className={styles.formControl} htmlFor="email">
 						<input
+							required
 							type="email"
 							placeholder="Email"
 							value={email}
@@ -30,6 +31,7 @@ const Login = () => {
 					</label>
 					<label className={styles.formControl} htmlFor="password">
 						<input
+							required
 							type="password"
 							placeholder="Password"
 							value={password}

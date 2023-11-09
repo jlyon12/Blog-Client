@@ -118,6 +118,11 @@
 	padding: 2px 10px;
 	border-radius: 16px;
 	box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+	&:hover,
+	&:focus,
+	&:active {
+		text-decoration: underline;
+	}
 }
 
 @mixin list-reset {

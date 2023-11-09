@@ -1,0 +1,14 @@
+@use '/src/sass/index.scss' as *;
+.main {
+	padding: calc($padding-4 * 2);
+	display: grid;
+	gap: calc($padding-4 * 2);
+}
+.sectionTitle {
+	@include themify($themes) {
+		color: themed('text');
+	}
+	font-size: $fs-md;
+	font-weight: $fw-bold;
+	margin-bottom: calc($margin-4 * 2);
+}
