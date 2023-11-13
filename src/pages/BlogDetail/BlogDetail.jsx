@@ -71,7 +71,9 @@ const BlogDetail = () => {
 							<CommentSection post={post} />
 						</>
 					)}
-					<NewsLetterForm />
+					<div className={styles.newsletter}>
+						<NewsLetterForm />
+					</div>
 				</section>
 			</div>
 		</main>
