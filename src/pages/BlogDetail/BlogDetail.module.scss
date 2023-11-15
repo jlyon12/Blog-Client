@@ -47,6 +47,15 @@
 		font-size: $fs-lg;
 		font-weight: $fw-bold;
 	}
+	.img {
+		display: flex;
+		margin-bottom: calc($margin-3 * 2);
+		img {
+			object-fit: cover;
+			width: 100%;
+		}
+		max-height: 450px;
+	}
 	.body {
 		@include themify($themes) {
 			color: themed('textAlt');

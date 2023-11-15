@@ -31,30 +31,42 @@ const Home = () => {
 	}, []);
 	return (
 		<main className={styles.main}>
-			<section>
-				<h2 className={styles.sectionTitle}>Recent Blog Posts</h2>
+			{isLoading ? (
 				<DotLoader
 					color="#6941c6"
 					className={styles.spinner}
 					loading={isLoading}
 				/>
-				{publicPosts &&
-					publicPosts
-						.slice(0, 3)
-						.map((post) => <PostCard key={post._id} post={post} />)}
-			</section>
-			<section>
-				<h2 className={styles.sectionTitle}>All Blog Posts</h2>
-				<DotLoader
-					color="#6941c6"
-					className={styles.spinner}
-					loading={isLoading}
-				/>
-				{publicPosts &&
-					publicPosts
-						.slice(3)
-						.map((post) => <PostCard key={post._id} post={post} />)}
-			</section>
+			) : (
+				<>
+					<section>
+						<h2 className={styles.sectionTitle}>Recent Blog Posts</h2>
+
+						<div className={styles.recentPosts}>
+							{publicPosts &&
+								publicPosts
+									.slice(0, 4)
+									.map((post, i) => (
+										<PostCard
+											className={`postCard-${i}`}
+											key={post._id}
+											post={post}
+										/>
+									))}
+						</div>
+					</section>
+					<section>
+						<h2 className={styles.sectionTitle}>All Blog Posts</h2>
+
+						<div className={styles.allPosts}>
+							{publicPosts &&
+								publicPosts
+									.slice(4)
+									.map((post) => <PostCard key={post._id} post={post} />)}
+						</div>
+					</section>
+				</>
+			)}
 		</main>
 	);
 };

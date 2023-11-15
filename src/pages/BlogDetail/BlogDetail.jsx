@@ -45,7 +45,9 @@ const BlogDetail = () => {
 				<section className={styles.recentPosts}>
 					<h2 className={styles.sectionTitle}>Recent Blog Posts</h2>
 					{posts &&
-						posts.map((post) => <PostCard key={post._id} post={post} />)}
+						posts
+							.slice(0, 5)
+							.map((post) => <PostCard key={post._id} post={post} />)}
 				</section>
 				<section className={styles.blogWrapper}>
 					{post && (
@@ -55,6 +57,9 @@ const BlogDetail = () => {
 									{format(new Date(post.createdAt), 'PPPP')}
 								</p>
 								<h3 className={styles.title}>{post.title}</h3>
+								<div className={styles.img}>
+									<img src={post.img.url} alt="" />
+								</div>
 								<div
 									className={styles.body}
 									// eslint-disable-next-line react/no-danger

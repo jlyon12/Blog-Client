@@ -12,3 +12,14 @@
 	font-weight: $fw-bold;
 	margin-bottom: calc($margin-4 * 2);
 }
+.posts {
+	display: grid;
+	@include breakpoint-md {
+		grid-template-columns: 1fr 1fr;
+		gap: $gap-4;
+	}
+	@include breakpoint-lg {
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: calc($gap-4 * 2);
+	}
+}

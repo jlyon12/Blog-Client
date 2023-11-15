@@ -2,14 +2,25 @@
 
 .post {
 	display: grid;
-	gap: $gap-3;
 	margin-bottom: calc($margin-4 * 2);
+	align-content: start;
+	grid-template-rows: repeat(3, auto) 1fr auto;
+	.img {
+		display: flex;
+		margin-bottom: calc($margin-3 * 2);
+		max-height: 240px;
+		img {
+			object-fit: cover;
+			width: 100%;
+		}
+	}
 	.date {
 		@include themify($themes) {
 			color: themed('textAccent');
 		}
 		font-size: $fs-sm;
 		font-weight: $fw-bold;
+		margin-bottom: $margin-3;
 	}
 	.titleContainer {
 		@include link-reset;
@@ -20,7 +31,7 @@
 		font-weight: $fw-bold;
 		display: flex;
 		gap: $gap-4;
-
+		margin-bottom: $margin-2;
 		.title {
 			&:hover {
 				text-decoration: underline;
@@ -30,6 +41,7 @@
 			flex-shrink: 0;
 			position: relative;
 			top: 0.25em;
+			margin-left: auto;
 		}
 	}
 	.body {
@@ -37,6 +49,7 @@
 			color: themed('textAlt');
 		}
 		text-overflow: ellipsis;
+		margin-bottom: calc($margin-3 * 2);
 	}
 
 	.footer {

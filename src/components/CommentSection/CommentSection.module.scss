@@ -6,7 +6,7 @@
 	gap: $gap-4;
 	padding: $padding-4;
 	@include themify($themes) {
-		border: 2px solid themed(inputBorder);
+		border: 1px solid themed(inputBorder);
 	}
 	.noUser {
 		margin: 0 auto;

@@ -27,8 +27,10 @@ const PostsByTag = () => {
 		<main className={styles.main}>
 			<section>
 				<h2 className={styles.sectionTitle}>Posts in {tagFilter}</h2>
-				{postsByTag &&
-					postsByTag.map((post) => <PostCard key={post._id} post={post} />)}
+				<div className={styles.posts}>
+					{postsByTag &&
+						postsByTag.map((post) => <PostCard key={post._id} post={post} />)}
+				</div>
 			</section>
 		</main>
 	);
