@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import DOMPurify from 'dompurify';
 import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
 import PostCard from 'src/components/PostCard/PostCard';
 import Tag from 'src/components/Tag/Tag';
 import CommentSection from 'src/components/CommentSection/CommentSection';
@@ -57,8 +58,13 @@ const BlogDetail = () => {
 									{format(new Date(post.createdAt), 'PPPP')}
 								</p>
 								<h3 className={styles.title}>{post.title}</h3>
-								<div className={styles.img}>
-									<img src={post.img.url} alt="" />
+								<div className={styles.imgContainer}>
+									<div className={styles.img}>
+										<img src={post.img.url} alt="" />
+									</div>
+									<Link className={styles.imgLink} to={post.img.src_link}>
+										{post.img.src}
+									</Link>
 								</div>
 								<div
 									className={styles.body}

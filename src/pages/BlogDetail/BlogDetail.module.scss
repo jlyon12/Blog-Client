@@ -47,14 +47,25 @@
 		font-size: $fs-lg;
 		font-weight: $fw-bold;
 	}
-	.img {
-		display: flex;
-		margin-bottom: calc($margin-3 * 2);
-		img {
-			object-fit: cover;
-			width: 100%;
+	.imgContainer {
+		.img {
+			display: flex;
+			margin-bottom: calc($margin-3 * 2);
+			img {
+				object-fit: cover;
+				width: 100%;
+			}
+			max-height: 450px;
+			margin-bottom: $margin-4;
 		}
-		max-height: 450px;
+		.imgLink {
+			@include link;
+			@include themify($themes) {
+				color: themed('text');
+			}
+			font-size: $fs-sm;
+			font-style: italic;
+		}
 	}
 	.body {
 		@include themify($themes) {
