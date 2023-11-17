@@ -32,6 +32,7 @@
 	flex-direction: column;
 	gap: calc($gap-4 * 2);
 	margin-bottom: calc($margin-4 * 2);
+
 	.date {
 		@include themify($themes) {
 			color: themed('textAccent');

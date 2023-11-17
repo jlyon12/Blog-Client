@@ -26,7 +26,7 @@ const useSignup = () => {
 		}
 
 		const res = await fetch(
-			`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/user/signup`,
+			`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/users/signup`,
 			{
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },

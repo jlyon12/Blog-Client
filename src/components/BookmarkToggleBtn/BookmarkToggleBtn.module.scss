@@ -1,0 +1,17 @@
+@use 'src/sass/index.scss' as *;
+.bookmarkContainer {
+	position: relative;
+	top: calc($margin-4 * 2);
+	display: flex;
+	justify-content: flex-end;
+	.bookmarkIcon {
+		@include btn-reset;
+		@include themify($themes) {
+			color: themed(btnBg);
+		}
+		&:hover,
+		&:focus {
+			transform: scale(1.1);
+		}
+	}
+}
