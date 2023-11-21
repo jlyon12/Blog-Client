@@ -44,7 +44,7 @@ const AccountLayout = () => {
 							<li>
 								<NavLink
 									className={({ isActive }) => isActive && styles.active}
-									to="/user/bookmarks"
+									to="/user/me"
 								>
 									Bookmarks
 								</NavLink>
@@ -52,7 +52,7 @@ const AccountLayout = () => {
 							<li>
 								<NavLink
 									className={({ isActive }) => isActive && styles.active}
-									to="/user/comments"
+									to="/user/me/comments"
 								>
 									Comments
 								</NavLink>
@@ -60,7 +60,7 @@ const AccountLayout = () => {
 							<li>
 								<NavLink
 									className={({ isActive }) => isActive && styles.active}
-									to="/user/settings"
+									to="/user/me/settings"
 								>
 									Settings
 								</NavLink>

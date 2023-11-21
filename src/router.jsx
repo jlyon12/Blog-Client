@@ -7,6 +7,7 @@ import {
 import useAuthContext from 'src/hooks/useAuthContext';
 import PageLayout from 'src/layouts/PageLayout';
 import AccountLayout from './layouts/AccountLayout';
+import AccountBookmarks from './pages/Account/AccountBookmarks';
 import ProtectedRoute from './utils/ProtectedRoute';
 import NotFound from './pages/NotFound/NotFound';
 import Home from 'src/pages/Home/Home';
@@ -31,7 +32,18 @@ const Router = () => {
 				{
 					path: 'user',
 					element: <ProtectedRoute />,
-					children: [{ index: true, element: <AccountLayout /> }],
+					children: [
+						{
+							path: 'me',
+							element: <AccountLayout />,
+							children: [
+								{
+									index: true,
+									element: <AccountBookmarks />,
+								},
+							],
+						},
+					],
 				},
 				{ path: '*', element: <NotFound /> },
 			],

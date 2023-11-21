@@ -70,7 +70,7 @@ const Header = () => {
 									<li>
 										<NavLink
 											className={({ isActive }) => isActive && styles.active}
-											to="/user"
+											to="/user/me"
 										>
 											Account
 										</NavLink>
