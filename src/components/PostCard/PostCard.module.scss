@@ -54,8 +54,13 @@
 
 	.footer {
 		display: flex;
-		flex-wrap: wrap;
-		gap: $gap-4;
+		justify-content: space-between;
 		align-items: center;
+		.tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: $gap-4;
+			align-items: center;
+		}
 	}
 }

@@ -1,10 +1,12 @@
 import { FaBookmark, FaRegBookmark } from 'react-icons/fa6';
 import useAuthContext from 'src/hooks/useAuthContext';
+import useBookmarksContext from 'src/hooks/useBookmarksContext';
 import propTypes from 'prop-types';
 import styles from './BookmarkToggleBtn.module.scss';
 
-const BookmarkToggleBtn = ({ userBookmarks, setUserBookmarks, post }) => {
+const BookmarkToggleBtn = ({ post }) => {
 	const { user } = useAuthContext();
+	const { bookmarks, dispatch } = useBookmarksContext();
 	const addBookmark = async () => {
 		const res = await fetch(
 			`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/users/${user.id}/bookmarks`,
@@ -19,7 +21,7 @@ const BookmarkToggleBtn = ({ userBookmarks, setUserBookmarks, post }) => {
 		);
 		const json = await res.json();
 		if (res.ok) {
-			setUserBookmarks([...userBookmarks, json.data]);
+			dispatch({ type: 'ADD_BOOKMARK', payload: json.data });
 		}
 	};
 	const deleteBookmark = async () => {
@@ -36,14 +38,12 @@ const BookmarkToggleBtn = ({ userBookmarks, setUserBookmarks, post }) => {
 		);
 		const json = await res.json();
 		if (res.ok) {
-			setUserBookmarks(
-				userBookmarks.filter((bookmark) => bookmark._id !== json.data._id)
-			);
+			dispatch({ type: 'DELETE_BOOKMARK', payload: json.data });
 		}
 	};
 	return (
 		<div className={styles.bookmarkContainer}>
-			{userBookmarks.some((bookmark) => bookmark._id === post._id) ? (
+			{bookmarks && bookmarks.some((bookmark) => bookmark._id === post._id) ? (
 				<button onClick={deleteBookmark} className={styles.bookmarkIcon}>
 					<FaBookmark size={32} />
 				</button>

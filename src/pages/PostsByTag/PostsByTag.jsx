@@ -11,7 +11,7 @@ const PostsByTag = () => {
 	useEffect(() => {
 		const fetchPostsByTag = async () => {
 			const res = await fetch(
-				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/?tag=${tagFilter}/`
+				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/?tag=${tagFilter}`
 			);
 
 			const json = await res.json();

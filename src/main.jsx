@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import Router from 'src/router';
 import { DarkModeContextProvider } from './context/DarkModeContext';
 import { AuthContextProvider } from 'src/context/AuthContext';
+import { BookmarksContextProvider } from './context/BookmarksContext';
 
 import 'src/sass/index.scss';
 
@@ -10,7 +11,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<DarkModeContextProvider>
 			<AuthContextProvider>
-				<Router />
+				<BookmarksContextProvider>
+					<Router />
+				</BookmarksContextProvider>
 			</AuthContextProvider>
 		</DarkModeContextProvider>
 	</React.StrictMode>

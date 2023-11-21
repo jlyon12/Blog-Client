@@ -5,10 +5,13 @@ import propTypes from 'prop-types';
 import { format } from 'date-fns';
 import Tag from 'src/components/Tag/Tag';
 import styles from './PostCard.module.scss';
+import BookmarkToggleBtn from '../BookmarkToggleBtn/BookmarkToggleBtn';
+import useAuthContext from 'src/hooks/useAuthContext';
 const PostCard = ({ post, className }) => {
 	const truncate = (text) => {
 		return text.substring(0, 175) + '...';
 	};
+	const { user } = useAuthContext();
 	return (
 		<div key={post._id} className={`${styles.post} + ${className}`}>
 			<Link to={`/posts/${post._id}`} className={styles.img}>
@@ -17,6 +20,7 @@ const PostCard = ({ post, className }) => {
 			<p className={styles.date}>{format(new Date(post.createdAt), 'PPPP')}</p>
 			<Link className={styles.titleContainer} to={`/posts/${post._id}`}>
 				<h3 className={styles.title}>{post.title}</h3>
+
 				<RiArrowRightUpLine className={styles.arrowIcon} size={24} />
 			</Link>
 			<div
@@ -27,9 +31,12 @@ const PostCard = ({ post, className }) => {
 				}}
 			/>
 			<div className={styles.footer}>
-				{post.tags.map((tag) => (
-					<Tag key={post._id + tag} tag={tag} />
-				))}
+				<div className={styles.tags}>
+					{post.tags.map((tag) => (
+						<Tag key={post._id + tag} tag={tag} />
+					))}
+				</div>
+				{user && <BookmarkToggleBtn post={post} />}
 			</div>
 		</div>
 	);

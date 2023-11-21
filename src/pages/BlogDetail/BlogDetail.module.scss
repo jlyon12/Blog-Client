@@ -39,6 +39,9 @@
 		}
 		font-size: $fs-sm;
 		font-weight: $fw-semibold;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 	.title {
 		@include link-reset;

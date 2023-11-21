@@ -4,6 +4,7 @@ import DOMPurify from 'dompurify';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 import useAuthContext from 'src/hooks/useAuthContext';
+import useBookmarksContext from 'src/hooks/useBookmarksContext';
 import PostCard from 'src/components/PostCard/PostCard';
 import Tag from 'src/components/Tag/Tag';
 import BookmarkToggleBtn from 'src/components/BookmarkToggleBtn/BookmarkToggleBtn';
@@ -14,7 +15,7 @@ import styles from './BlogDetail.module.scss';
 const BlogDetail = () => {
 	const [posts, setPosts] = useState(null);
 	const [post, setPost] = useState(null);
-	const [userBookmarks, setUserBookmarks] = useState([]);
+	const { dispatch } = useBookmarksContext();
 	const { user } = useAuthContext();
 	const { id } = useParams();
 
@@ -52,7 +53,7 @@ const BlogDetail = () => {
 
 			const json = await res.json();
 			if (res.ok) {
-				setUserBookmarks(json.data.bookmarks);
+				dispatch({ type: 'SET_BOOKMARKS', payload: json.data.bookmarks });
 			}
 		};
 		if (user) {
@@ -60,7 +61,7 @@ const BlogDetail = () => {
 		}
 		fetchSinglePost();
 		fetchPosts();
-	}, [id, user]);
+	}, [dispatch, id, user]);
 
 	return (
 		<main className={styles.main}>
@@ -76,13 +77,9 @@ const BlogDetail = () => {
 					{post && (
 						<>
 							<div key={post._id} className={styles.blog}>
-								<BookmarkToggleBtn
-									userBookmarks={userBookmarks}
-									setUserBookmarks={setUserBookmarks}
-									post={post}
-								/>
 								<p className={styles.date}>
 									{format(new Date(post.createdAt), 'PPPP')}
+									{user && <BookmarkToggleBtn post={post} />}
 								</p>
 
 								<h3 className={styles.title}>{post.title}</h3>

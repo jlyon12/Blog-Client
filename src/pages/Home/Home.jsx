@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import { DotLoader } from 'react-spinners';
+import useBookmarksContext from 'src/hooks/useBookmarksContext';
+import useAuthContext from 'src/hooks/useAuthContext';
 import PostCard from 'src/components/PostCard/PostCard';
 
 import styles from './Home.module.scss';
 const Home = () => {
 	const [publicPosts, setPublicPosts] = useState(null);
-	const [errors, setErrors] = useState(null);
+	const { dispatch } = useBookmarksContext();
+	const { user } = useAuthContext();
 	const [isLoading, setIsLoading] = useState(false);
 	useEffect(() => {
 		const fetchPublicPosts = async () => {
 			setIsLoading(true);
-			setErrors(null);
 			const res = await fetch(
 				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/`
 			);
@@ -19,16 +21,31 @@ const Home = () => {
 
 			if (!res.ok) {
 				setIsLoading(false);
-				setErrors(json.errors);
 			}
 			if (res.ok) {
 				setIsLoading(false);
 				setPublicPosts(json.data);
 			}
 		};
+		const fetchUserBookmarks = async () => {
+			const res = await fetch(
+				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/users/${
+					user.id
+				}/bookmarks`,
+				{
+					headers: { Authorization: `Bearer ${user.token}` },
+				}
+			);
+
+			const json = await res.json();
+			if (res.ok) {
+				dispatch({ type: 'SET_BOOKMARKS', payload: json.data.bookmarks });
+			}
+		};
 
 		fetchPublicPosts();
-	}, []);
+		fetchUserBookmarks();
+	}, [dispatch, user]);
 	return (
 		<main className={styles.main}>
 			{isLoading ? (
