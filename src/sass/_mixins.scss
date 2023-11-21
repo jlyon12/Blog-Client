@@ -62,7 +62,7 @@
 	&:active,
 	&:focus {
 		text-decoration: underline;
-		text-underline-offset: $gap-1;
+		text-underline-offset: 0.25em;
 	}
 }
 

@@ -6,6 +6,8 @@ import {
 
 import useAuthContext from 'src/hooks/useAuthContext';
 import PageLayout from 'src/layouts/PageLayout';
+import AccountLayout from './layouts/AccountLayout';
+import ProtectedRoute from './utils/ProtectedRoute';
 import NotFound from './pages/NotFound/NotFound';
 import Home from 'src/pages/Home/Home';
 import PostsByTag from './pages/PostsByTag/PostsByTag';
@@ -26,6 +28,11 @@ const Router = () => {
 				{ path: 'signup', element: user ? <Navigate to="/" /> : <Signup /> },
 				{ path: '/posts/:id', element: <BlogDetail /> },
 				{ path: '/tags/:tag', element: <PostsByTag /> },
+				{
+					path: 'user',
+					element: <ProtectedRoute />,
+					children: [{ index: true, element: <AccountLayout /> }],
+				},
 				{ path: '*', element: <NotFound /> },
 			],
 		},

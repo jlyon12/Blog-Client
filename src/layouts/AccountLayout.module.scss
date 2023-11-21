@@ -1,0 +1,41 @@
+@use 'src/sass/index' as *;
+.main {
+	padding: calc($padding-4 * 2);
+	display: grid;
+	gap: calc($padding-4 * 2);
+	flex-grow: 1;
+}
+
+.accountHeader {
+	display: flex;
+	flex-direction: column;
+	gap: $gap-4;
+}
+.spinner {
+	margin: 0 auto;
+}
+.nav {
+	display: flex;
+	justify-content: center;
+	padding: $padding-4;
+	border-radius: 8px;
+	@include themify($themes) {
+		border: 1px solid themed(textAccent);
+	}
+	ul {
+		@include list-reset;
+		@include list-horizontal(calc($gap-4 * 2));
+		a {
+			@include nav-link;
+			font-weight: $fw-semibold;
+			font-size: $fs-md;
+		}
+	}
+	.active {
+		text-decoration: underline;
+		text-underline-offset: 0.25em;
+		@include themify($themes) {
+			text-decoration-color: themed('textAccent');
+		}
+	}
+}

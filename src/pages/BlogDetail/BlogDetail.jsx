@@ -32,7 +32,7 @@ const BlogDetail = () => {
 		};
 		const fetchSinglePost = async () => {
 			const res = await fetch(
-				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/${id}`
+				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/${id}/`
 			);
 
 			const json = await res.json();

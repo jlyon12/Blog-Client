@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { MdOutlineMenu, MdClose } from 'react-icons/md';
 import useAuthContext from 'src/hooks/useAuthContext';
 import useDarkModeContext from 'src/hooks/useDarkModeContext';
@@ -20,7 +20,7 @@ const Header = () => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.navContainer}>
-				<Link>Your name</Link>
+				<NavLink>Your name</NavLink>
 				<button className={styles.menuBtn} onClick={toggleNav}>
 					<MdOutlineMenu size={32} />
 				</button>
@@ -29,28 +29,56 @@ const Header = () => {
 						className={`
 							${styles.navMenu} ${isOpen ? styles.mobileMenu : styles.desktopMenu}`}
 					>
-						<Link className={styles.mobileMenuTitle}>Your name</Link>
+						<NavLink className={styles.mobileMenuTitle}>Your name</NavLink>
 						<ul>
 							<li>
-								<Link>Blog</Link>
+								<NavLink
+									className={({ isActive }) => isActive && styles.active}
+									to="/"
+								>
+									Blog
+								</NavLink>
+							</li>
+
+							<li>
+								<NavLink
+									className={({ isActive }) => isActive && styles.active}
+									to="/about"
+								>
+									About
+								</NavLink>
 							</li>
 							<li>
-								<Link>Project</Link>
-							</li>
-							<li>
-								<Link>About</Link>
-							</li>
-							<li>
-								<Link>Newsletter</Link>
+								<NavLink
+									className={({ isActive }) => isActive && styles.active}
+									to="/newsletter"
+								>
+									Newsletter
+								</NavLink>
 							</li>
 							{!user ? (
 								<li>
-									<Link to="/login">Login</Link>
+									<NavLink
+										className={({ isActive }) => isActive && styles.active}
+										to="/login"
+									>
+										Login
+									</NavLink>
 								</li>
 							) : (
-								<li>
-									<button onClick={logout}>Logout</button>
-								</li>
+								<>
+									<li>
+										<NavLink
+											className={({ isActive }) => isActive && styles.active}
+											to="/user"
+										>
+											Account
+										</NavLink>
+									</li>
+									<li>
+										<button onClick={logout}>Logout</button>
+									</li>
+								</>
 							)}
 						</ul>
 						<ThemeToggleSwitch

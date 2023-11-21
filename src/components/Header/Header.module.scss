@@ -26,6 +26,13 @@
 		@include nav-link;
 		margin: $margin-2;
 	}
+	.active {
+		text-decoration: underline;
+		text-underline-offset: 0.25em;
+		@include themify($themes) {
+			text-decoration-color: themed('textAccent');
+		}
+	}
 	button {
 		@include btn-reset;
 		@include nav-link;
