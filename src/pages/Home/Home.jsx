@@ -3,18 +3,22 @@ import { DotLoader } from 'react-spinners';
 import useBookmarksContext from 'src/hooks/useBookmarksContext';
 import useAuthContext from 'src/hooks/useAuthContext';
 import PostCard from 'src/components/PostCard/PostCard';
-
+import Pagination from 'src/components/Pagination/Pagination';
 import styles from './Home.module.scss';
 const Home = () => {
-	const [publicPosts, setPublicPosts] = useState(null);
+	const [recentPosts, setRecentPosts] = useState(null);
+	const [allPosts, setAllPosts] = useState(null);
 	const { dispatch } = useBookmarksContext();
 	const { user } = useAuthContext();
 	const [isLoading, setIsLoading] = useState(false);
+	const [totalCount, setTotalCount] = useState();
+	const [page, setPage] = useState(1);
+	const pageSize = 6;
 	useEffect(() => {
-		const fetchPublicPosts = async () => {
+		const fetchRecentPosts = async () => {
 			setIsLoading(true);
 			const res = await fetch(
-				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/`
+				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/?pageSize=${4}`
 			);
 
 			const json = await res.json();
@@ -23,10 +27,35 @@ const Home = () => {
 				setIsLoading(false);
 			}
 			if (res.ok) {
+				setRecentPosts(json.data);
 				setIsLoading(false);
-				setPublicPosts(json.data);
 			}
 		};
+
+		fetchRecentPosts();
+	}, []);
+	useEffect(() => {
+		const fetchAllPosts = async () => {
+			setIsLoading(true);
+
+			const res = await fetch(
+				`${
+					import.meta.env.VITE_API_CROSS_ORIGIN
+				}/api/posts/?page=${page}&pageSize=${pageSize}`
+			);
+
+			const json = await res.json();
+
+			if (!res.ok) {
+				setIsLoading(false);
+			}
+			if (res.ok) {
+				setAllPosts(json.data);
+				setIsLoading(false);
+				setTotalCount(json.metadata.totalCount);
+			}
+		};
+
 		const fetchUserBookmarks = async () => {
 			const res = await fetch(
 				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/users/${
@@ -43,9 +72,9 @@ const Home = () => {
 			}
 		};
 
-		fetchPublicPosts();
+		fetchAllPosts();
 		fetchUserBookmarks();
-	}, [dispatch, user]);
+	}, [dispatch, page, pageSize, user]);
 	return (
 		<main className={styles.main}>
 			{isLoading ? (
@@ -60,27 +89,29 @@ const Home = () => {
 						<h2 className={styles.sectionTitle}>Recent Blog Posts</h2>
 
 						<div className={styles.recentPosts}>
-							{publicPosts &&
-								publicPosts
-									.slice(0, 4)
-									.map((post, i) => (
-										<PostCard
-											className={`postCard-${i}`}
-											key={post._id}
-											post={post}
-										/>
-									))}
+							{recentPosts &&
+								recentPosts.map((post, i) => (
+									<PostCard
+										className={`postCard-${i}`}
+										key={post._id}
+										post={post}
+									/>
+								))}
 						</div>
 					</section>
 					<section>
 						<h2 className={styles.sectionTitle}>All Blog Posts</h2>
 
 						<div className={styles.allPosts}>
-							{publicPosts &&
-								publicPosts
-									.slice(4)
-									.map((post) => <PostCard key={post._id} post={post} />)}
+							{allPosts &&
+								allPosts.map((post) => <PostCard key={post._id} post={post} />)}
 						</div>
+						<Pagination
+							page={page}
+							setPage={setPage}
+							totalCount={Number(totalCount)}
+							pageSize={Number(pageSize)}
+						/>
 					</section>
 				</>
 			)}
