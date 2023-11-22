@@ -70,14 +70,14 @@ const CommentSection = ({ post }) => {
 				comments.map((comment) => (
 					<Comment key={comment._id} comment={comment} />
 				))}
-
-			<Pagination
-				page={page}
-				setPage={setPage}
-				totalCount={Number(totalCount)}
-				pageSize={Number(pageSize)}
-			/>
-
+			{totalCount > pageSize && (
+				<Pagination
+					page={page}
+					setPage={setPage}
+					totalCount={Number(totalCount)}
+					pageSize={Number(pageSize)}
+				/>
+			)}
 			{user ? (
 				<CommentForm postId={post._id} fetchComments={fetchComments} />
 			) : (

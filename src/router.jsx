@@ -8,6 +8,7 @@ import useAuthContext from 'src/hooks/useAuthContext';
 import PageLayout from 'src/layouts/PageLayout';
 import AccountLayout from './layouts/AccountLayout';
 import AccountBookmarks from './pages/Account/AccountBookmarks';
+import AccountSettings from './pages/Account/AccountSettings';
 import ProtectedRoute from './utils/ProtectedRoute';
 import NotFound from './pages/NotFound/NotFound';
 import Home from 'src/pages/Home/Home';
@@ -38,8 +39,12 @@ const Router = () => {
 							element: <AccountLayout />,
 							children: [
 								{
-									index: true,
+									path: 'bookmarks',
 									element: <AccountBookmarks />,
+								},
+								{
+									path: 'settings',
+									element: <AccountSettings />,
 								},
 							],
 						},

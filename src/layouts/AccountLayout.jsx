@@ -27,7 +27,6 @@ const AccountLayout = () => {
 		};
 		getUserProfile();
 	}, [user]);
-	console.log(userProfile);
 	return (
 		<main className={styles.main}>
 			{isLoading ? (
@@ -44,7 +43,7 @@ const AccountLayout = () => {
 							<li>
 								<NavLink
 									className={({ isActive }) => isActive && styles.active}
-									to="/user/me"
+									to="/user/me/bookmarks"
 								>
 									Bookmarks
 								</NavLink>

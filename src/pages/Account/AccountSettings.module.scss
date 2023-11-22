@@ -1,0 +1,43 @@
+@use 'src/sass/index.scss' as *;
+
+.section {
+	display: flex;
+	flex-direction: column;
+}
+
+.deleteGroup {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: $gap-4;
+	text-align: center;
+	p {
+		font-size: $fs-md;
+		font-weight: $fw-semibold;
+	}
+}
+
+.btn {
+	@include btn-primary;
+	@include themify($themes) {
+		color: themed('btnText');
+		background-color: themed('btnBg');
+		border: 1px solid themed('btnBg');
+	}
+	width: fit-content;
+	margin-inline: auto;
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+}
+.spinner {
+	margin: 0 auto;
+}
+.error {
+	text-align: center;
+	letter-spacing: 0.25px;
+	font-size: $fs-md;
+	color: #dd1155;
+}

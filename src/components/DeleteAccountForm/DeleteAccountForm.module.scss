@@ -1,0 +1,62 @@
+@use 'src/sass/index.scss' as *;
+.form {
+	display: grid;
+	gap: $gap-4;
+	align-items: center;
+	legend {
+		visibility: hidden;
+		height: 0;
+		width: 0;
+	}
+	fieldset {
+		border: 0;
+		padding: 0;
+		display: grid;
+		gap: $gap-1;
+	}
+	label {
+		padding: 0;
+	}
+	input {
+		padding: $padding-3 $padding-4;
+		border-radius: 8px;
+		border: transparent;
+		box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+		@include themify($themes) {
+			border: 1px solid themed('inputBorder');
+			background-color: themed('inputBg');
+			color: themed('text');
+		}
+	}
+}
+.btnDanger {
+	@include btn-primary;
+	@include themify($themes) {
+		color: themed('btnText');
+		background-color: themed('error');
+		border: 1px solid themed('error');
+	}
+	width: fit-content;
+	margin-inline: auto;
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+}
+.btn {
+	@include btn-primary;
+	@include themify($themes) {
+		color: themed('btnText');
+		background-color: themed('btnBg');
+		border: 1px solid themed('btnBg');
+	}
+	width: fit-content;
+	margin-inline: auto;
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+}
+.spinner {
+	margin: 0 auto;
+}

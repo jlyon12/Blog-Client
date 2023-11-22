@@ -13,6 +13,7 @@ const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const { user } = useAuthContext();
 	const { logout } = useLogout();
+
 	const toggleNav = () => {
 		setIsOpen(!isOpen);
 	};
@@ -29,10 +30,13 @@ const Header = () => {
 						className={`
 							${styles.navMenu} ${isOpen ? styles.mobileMenu : styles.desktopMenu}`}
 					>
-						<NavLink className={styles.mobileMenuTitle}>Your name</NavLink>
+						<NavLink onClick={toggleNav} className={styles.mobileMenuTitle}>
+							Your name
+						</NavLink>
 						<ul>
 							<li>
 								<NavLink
+									onClick={toggleNav}
 									className={({ isActive }) => isActive && styles.active}
 									to="/"
 								>
@@ -42,6 +46,7 @@ const Header = () => {
 
 							<li>
 								<NavLink
+									onClick={toggleNav}
 									className={({ isActive }) => isActive && styles.active}
 									to="/about"
 								>
@@ -50,6 +55,7 @@ const Header = () => {
 							</li>
 							<li>
 								<NavLink
+									onClick={toggleNav}
 									className={({ isActive }) => isActive && styles.active}
 									to="/newsletter"
 								>
@@ -59,6 +65,7 @@ const Header = () => {
 							{!user ? (
 								<li>
 									<NavLink
+										onClick={toggleNav}
 										className={({ isActive }) => isActive && styles.active}
 										to="/login"
 									>
@@ -69,8 +76,9 @@ const Header = () => {
 								<>
 									<li>
 										<NavLink
+											onClick={toggleNav}
 											className={({ isActive }) => isActive && styles.active}
-											to="/user/me"
+											to="/user/me/bookmarks"
 										>
 											Account
 										</NavLink>
