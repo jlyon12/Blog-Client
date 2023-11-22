@@ -6,56 +6,47 @@ import CommentForm from 'src/components/CommentForm/CommentForm';
 import Switch from 'src/components/Switch/Switch';
 import useAuthContext from 'src/hooks/useAuthContext';
 import styles from './CommentSection.module.scss';
-
+import Pagination from '../Pagination/Pagination';
 const CommentSection = ({ post }) => {
 	const [comments, setComments] = useState(null);
 	const { user } = useAuthContext();
 	const { id } = useParams();
-	const [limit, setLimit] = useState(5);
-	const [skip, setSkip] = useState(0);
 	const [sort, setSort] = useState(1);
+	const [totalCount, setTotalCount] = useState();
+	const [page, setPage] = useState(1);
+	const [pageSize, setPageSize] = useState(5);
 	const handleLimitChange = (e) => {
-		setLimit(e.target.value);
-	};
-
-	const handleSkipDecrease = () => {
-		if (skip <= 0) {
-			return;
-		} else setSkip((prev) => prev - limit);
-	};
-
-	const handleSkipIncrease = () => {
-		if (comments.length <= 1) {
-			return;
-		}
-
-		setSkip((prev) => prev + limit);
+		setPageSize(e.target.value);
+		setPage(1);
 	};
 
 	const handleSortChange = () => {
 		setSort((prev) => (prev === 1 ? -1 : 1));
-		setSkip(0);
+		setPage(1);
 	};
 	const fetchComments = useCallback(async () => {
 		const res = await fetch(
 			`${
 				import.meta.env.VITE_API_CROSS_ORIGIN
-			}/api/posts/${id}/comments?sort=${sort}&limit=${limit}&skip=${skip}`
+			}/api/posts/${id}/comments?sort=${sort}&pageSize=${pageSize}&page=${page}`
 		);
 
 		const json = await res.json();
 		if (res.ok) {
 			setComments(json.data);
+			setTotalCount(json.metadata.totalCount);
 		}
-	}, [id, limit, skip, sort]);
+	}, [id, page, pageSize, sort]);
 
 	useEffect(() => {
 		fetchComments();
 	}, [fetchComments, id]);
+
 	return (
 		<div className={styles.commentSection}>
 			<h3>Comments</h3>
 			<div className={styles.querySelectors}>
+				<p className={styles.total}>{totalCount} Total Comments</p>
 				<label htmlFor="limit">
 					Limit
 					<select name="limit" id="limit" onChange={handleLimitChange}>
@@ -79,12 +70,14 @@ const CommentSection = ({ post }) => {
 				comments.map((comment) => (
 					<Comment key={comment._id} comment={comment} />
 				))}
-			<div className={styles.pageNavigation}>
-				{skip > 0 && <button onClick={handleSkipDecrease}>Prev</button>}
-				<button className={styles.nextBtn} onClick={handleSkipIncrease}>
-					Next
-				</button>
-			</div>
+
+			<Pagination
+				page={page}
+				setPage={setPage}
+				totalCount={Number(totalCount)}
+				pageSize={Number(pageSize)}
+			/>
+
 			{user ? (
 				<CommentForm postId={post._id} fetchComments={fetchComments} />
 			) : (

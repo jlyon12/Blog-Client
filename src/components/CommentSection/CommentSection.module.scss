@@ -36,6 +36,13 @@
 		gap: $gap-2;
 		align-items: center;
 	}
+	.total {
+		margin-right: auto;
+		font-size: $fs-sm;
+		@include themify($themes) {
+			color: themed('textAlt');
+		}
+	}
 	.toggleContainer {
 		display: flex;
 		align-items: center;
