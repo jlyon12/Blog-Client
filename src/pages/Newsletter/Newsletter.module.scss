@@ -1,0 +1,8 @@
+@use 'src/sass/index.scss' as *;
+.main {
+	padding: calc($padding-4 * 2);
+	display: grid;
+	place-content: center;
+	gap: calc($padding-4 * 2);
+	flex-grow: 1;
+}

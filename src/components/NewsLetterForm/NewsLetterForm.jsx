@@ -23,6 +23,7 @@ const NewsLetterForm = () => {
 						<input
 							type="email"
 							value={email}
+							required
 							placeholder="Enter your email"
 							onChange={(e) => setEmail(e.target.value)}
 							name="email"

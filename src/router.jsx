@@ -9,6 +9,7 @@ import PageLayout from 'src/layouts/PageLayout';
 import AccountLayout from './layouts/AccountLayout';
 import AccountBookmarks from './pages/Account/AccountBookmarks';
 import AccountSettings from './pages/Account/AccountSettings';
+import AccountComments from './pages/Account/AccountComments';
 import ProtectedRoute from './utils/ProtectedRoute';
 import NotFound from './pages/NotFound/NotFound';
 import Home from 'src/pages/Home/Home';
@@ -16,6 +17,7 @@ import PostsByTag from './pages/PostsByTag/PostsByTag';
 import Login from 'src/pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import BlogDetail from 'src/pages/BlogDetail/BlogDetail';
+import NewsLetter from 'src/pages/Newsletter/Newsletter';
 
 const Router = () => {
 	const { user } = useAuthContext();
@@ -28,6 +30,7 @@ const Router = () => {
 				{ index: true, element: <Home /> },
 				{ path: 'login', element: user ? <Navigate to="/" /> : <Login /> },
 				{ path: 'signup', element: user ? <Navigate to="/" /> : <Signup /> },
+				{ path: 'newsletter', element: <NewsLetter /> },
 				{ path: '/posts/:id', element: <BlogDetail /> },
 				{ path: '/tags/:tag', element: <PostsByTag /> },
 				{
@@ -41,6 +44,10 @@ const Router = () => {
 								{
 									path: 'bookmarks',
 									element: <AccountBookmarks />,
+								},
+								{
+									path: 'comments',
+									element: <AccountComments />,
 								},
 								{
 									path: 'settings',
