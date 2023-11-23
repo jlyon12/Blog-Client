@@ -1,0 +1,36 @@
+@use '/src/sass/index.scss' as *;
+
+.comment {
+	display: flex;
+	flex-direction: column;
+	gap: $gap-1;
+
+	.header {
+		.date {
+			font-size: $fs-sm;
+			@include themify($themes) {
+				color: themed(textAccent);
+			}
+		}
+	}
+	.body {
+		// padding-inline: $padding-2;
+		// font-size: $fs-sm;
+	}
+	.link {
+		@include nav-link;
+		font-size: $fs-sm;
+		@include themify($themes) {
+			color: themed(textAlt);
+		}
+	}
+}
+.btn {
+	@include btn-secondary;
+	// margin: 0 auto;
+	@include themify($themes) {
+		color: themed(btnText);
+		background-color: themed(error);
+	}
+	margin-left: auto;
+}

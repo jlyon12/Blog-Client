@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import useAuthContext from 'src/hooks/useAuthContext';
-import useBookmarksContext from 'src/hooks/useBookmarksContext';
-import PostCard from 'src/components/PostCard/PostCard';
+import PrivateComment from 'src/components/PrivateComment/PrivateComment';
 import Pagination from 'src/components/Pagination/Pagination';
 import QueryControls from 'src/components/QueryControls/QueryControls';
-import styles from './AccountBookmarks.module.scss';
+import styles from './AccountComments.module.scss';
 
-const AccountBookmarks = () => {
-	const { bookmarks, dispatch } = useBookmarksContext();
+const AccountComments = () => {
+	const [comments, setComments] = useState();
 	const { user } = useAuthContext();
 
 	const [sort, setSort] = useState(-1);
@@ -16,11 +15,11 @@ const AccountBookmarks = () => {
 	const [pageSize, setPageSize] = useState(5);
 
 	useEffect(() => {
-		const fetchUserBookmarks = async () => {
+		const fetchUserComments = async () => {
 			const res = await fetch(
 				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/users/${
 					user.id
-				}/bookmarks?sort=${sort}&pageSize=${pageSize}&page=${page}`,
+				}/comments?sort=${sort}&pageSize=${pageSize}&page=${page}`,
 				{
 					headers: { Authorization: `Bearer ${user.token}` },
 				}
@@ -29,13 +28,13 @@ const AccountBookmarks = () => {
 			const json = await res.json();
 
 			if (res.ok) {
-				dispatch({ type: 'SET_BOOKMARKS', payload: json.data });
+				setComments(json.data);
 				setTotalCount(json.metadata.totalCount);
 			}
 		};
 
-		fetchUserBookmarks();
-	}, [dispatch, page, pageSize, sort, user]);
+		fetchUserComments();
+	}, [page, pageSize, sort, user]);
 
 	return (
 		<>
@@ -47,13 +46,20 @@ const AccountBookmarks = () => {
 				sort={sort}
 				setSort={setSort}
 				totalCount={totalCount}
-				collectionName="Bookmarks"
+				collectionName="Comments"
 			/>
-			<section className={styles.bookmarks}>
-				{bookmarks &&
-					bookmarks.map((bookmark) => (
-						<PostCard post={bookmark} key={bookmark._id} />
-					))}
+			<section className={styles.comments}>
+				{comments && comments.length > 0 ? (
+					comments.map((comment) => (
+						<PrivateComment
+							key={comment._id}
+							comment={comment}
+							setComments={setComments}
+						/>
+					))
+				) : (
+					<p className={styles.noComments}>You do not have any comments!</p>
+				)}
 			</section>
 
 			<Pagination
@@ -66,4 +72,4 @@ const AccountBookmarks = () => {
 	);
 };
 
-export default AccountBookmarks;
+export default AccountComments;

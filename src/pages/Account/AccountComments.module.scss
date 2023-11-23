@@ -1,0 +1,27 @@
+@use '/src/sass/index.scss' as *;
+.comments {
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: $gap-4;
+	padding: $padding-4;
+	@include themify($themes) {
+		border: 1px solid themed(inputBorder);
+	}
+
+	hr {
+		border: 0;
+		@include themify($themes) {
+			border-top: 0.5px solid themed('inputBg');
+		}
+	}
+	hr:last-of-type {
+		display: none;
+	}
+	.noComments {
+		@include themify($themes) {
+			color: themed(textAlt);
+		}
+		margin: 0 auto;
+	}
+}
