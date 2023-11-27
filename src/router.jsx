@@ -6,16 +6,16 @@ import {
 
 import useAuthContext from 'src/hooks/useAuthContext';
 import PageLayout from 'src/layouts/PageLayout';
-import AccountLayout from './layouts/AccountLayout';
-import AccountBookmarks from './pages/Account/AccountBookmarks';
-import AccountSettings from './pages/Account/AccountSettings';
-import AccountComments from './pages/Account/AccountComments';
-import ProtectedRoute from './utils/ProtectedRoute';
-import NotFound from './pages/NotFound/NotFound';
+import AccountLayout from 'src/layouts/AccountLayout';
+import AccountBookmarks from 'src/pages/Account/AccountBookmarks';
+import AccountSettings from 'src/pages/Account/AccountSettings';
+import AccountComments from 'src/pages/Account/AccountComments';
+import ProtectedRoute from 'src/utils/ProtectedRoute';
+import NotFound from 'src/pages/NotFound/NotFound';
 import Home from 'src/pages/Home/Home';
-import PostsByTag from './pages/PostsByTag/PostsByTag';
+import PostsByTag from 'src/pages/PostsByTag/PostsByTag';
 import Login from 'src/pages/Login/Login';
-import Signup from './pages/Signup/Signup';
+import Signup from 'src/pages/Signup/Signup';
 import BlogDetail from 'src/pages/BlogDetail/BlogDetail';
 import NewsLetter from 'src/pages/Newsletter/Newsletter';
 

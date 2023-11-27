@@ -41,7 +41,6 @@ const useSignup = () => {
 		);
 
 		const json = await res.json();
-		console.log(json);
 		if (!res.ok) {
 			setIsLoading(false);
 			setError(json.errors);
