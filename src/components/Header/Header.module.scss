@@ -3,7 +3,7 @@
 .navContainer {
 	position: relative;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	align-items: center;
 	font-size: $fs-md;
 	padding: $padding-5;
@@ -64,6 +64,9 @@
 	}
 
 	.navMenu {
+		ul {
+			margin-top: auto;
+		}
 		@include themify($themes) {
 			color: themed('text');
 			background-color: themed('bg');

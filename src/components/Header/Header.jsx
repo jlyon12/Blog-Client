@@ -21,7 +21,6 @@ const Header = () => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.navContainer}>
-				<NavLink>Your name</NavLink>
 				<button className={styles.menuBtn} onClick={toggleNav}>
 					<MdOutlineMenu size={32} />
 				</button>
@@ -30,9 +29,6 @@ const Header = () => {
 						className={`
 							${styles.navMenu} ${isOpen ? styles.mobileMenu : styles.desktopMenu}`}
 					>
-						<NavLink onClick={toggleNav} className={styles.mobileMenuTitle}>
-							Your name
-						</NavLink>
 						<ul>
 							<li>
 								<NavLink
