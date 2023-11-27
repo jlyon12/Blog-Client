@@ -31,10 +31,6 @@
 				grid-row: 1/5;
 				margin-bottom: 0;
 			}
-
-			img {
-				margin-right: calc($margin-3 * 2);
-			}
 		}
 	}
 	@include breakpoint-custom(1600px) {
@@ -58,9 +54,6 @@
 			a:first-of-type {
 				grid-row: 1/5;
 				margin-bottom: 0;
-			}
-			img {
-				margin-right: calc($margin-3 * 2);
 			}
 		}
 	}

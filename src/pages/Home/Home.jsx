@@ -73,7 +73,9 @@ const Home = () => {
 		};
 
 		fetchAllPosts();
-		fetchUserBookmarks();
+		if (user) {
+			fetchUserBookmarks();
+		}
 	}, [dispatch, page, pageSize, user]);
 	return (
 		<main className={styles.main}>

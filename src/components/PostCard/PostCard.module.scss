@@ -5,14 +5,16 @@
 	margin-bottom: calc($margin-4 * 2);
 	align-content: start;
 	grid-template-rows: repeat(3, auto) 1fr auto;
+	column-gap: calc($gap-3 * 2);
 	.img {
+		@include link-reset;
 		display: flex;
 		margin-bottom: calc($margin-3 * 2);
 		max-height: 240px;
-		img {
-			object-fit: cover;
-			width: 100%;
-		}
+	}
+	img {
+		object-fit: cover;
+		width: 100%;
 	}
 	.date {
 		@include themify($themes) {
