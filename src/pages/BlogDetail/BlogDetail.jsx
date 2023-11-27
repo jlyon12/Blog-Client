@@ -77,10 +77,10 @@ const BlogDetail = () => {
 					{post && (
 						<>
 							<div key={post._id} className={styles.blog}>
-								<p className={styles.date}>
-									{format(new Date(post.createdAt), 'PPPP')}
+								<div className={styles.date}>
+									<p>{format(new Date(post.createdAt), 'PPPP')}</p>
 									{user && <BookmarkToggleBtn post={post} />}
-								</p>
+								</div>
 
 								<h3 className={styles.title}>{post.title}</h3>
 								<div className={styles.imgContainer}>
