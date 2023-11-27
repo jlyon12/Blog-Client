@@ -37,7 +37,9 @@ const Header = () => {
 							<li>
 								<NavLink
 									onClick={toggleNav}
-									className={({ isActive }) => isActive && styles.active}
+									className={({ isActive }) =>
+										isActive ? styles.active : undefined
+									}
 									to="/"
 								>
 									Blog
@@ -47,7 +49,9 @@ const Header = () => {
 							<li>
 								<NavLink
 									onClick={toggleNav}
-									className={({ isActive }) => isActive && styles.active}
+									className={({ isActive }) =>
+										isActive ? styles.active : undefined
+									}
 									to="/about"
 								>
 									About
@@ -56,7 +60,9 @@ const Header = () => {
 							<li>
 								<NavLink
 									onClick={toggleNav}
-									className={({ isActive }) => isActive && styles.active}
+									className={({ isActive }) =>
+										isActive ? styles.active : undefined
+									}
 									to="/newsletter"
 								>
 									Newsletter
@@ -66,7 +72,9 @@ const Header = () => {
 								<li>
 									<NavLink
 										onClick={toggleNav}
-										className={({ isActive }) => isActive && styles.active}
+										className={({ isActive }) =>
+											isActive ? styles.active : undefined
+										}
 										to="/login"
 									>
 										Login
@@ -77,7 +85,9 @@ const Header = () => {
 									<li>
 										<NavLink
 											onClick={toggleNav}
-											className={({ isActive }) => isActive && styles.active}
+											className={({ isActive }) =>
+												isActive ? styles.active : undefined
+											}
 											to="/user/me/bookmarks"
 										>
 											Account
