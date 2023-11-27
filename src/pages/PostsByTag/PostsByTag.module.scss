@@ -11,6 +11,20 @@
 	font-size: $fs-md;
 	font-weight: $fw-bold;
 	margin-bottom: calc($margin-4 * 2);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	.backLink {
+		display: flex;
+		align-items: center;
+		gap: $gap-2;
+		@include nav-link;
+		@include themify($themes) {
+			color: themed('textAlt');
+		}
+		font-size: $fs-sm;
+	}
 }
 .posts {
 	display: grid;

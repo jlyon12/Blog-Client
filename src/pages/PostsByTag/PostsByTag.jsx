@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
+import { RiArrowLeftLine } from 'react-icons/ri';
 import PostCard from 'src/components/PostCard/PostCard';
 
 import styles from './PostsByTag.module.scss';
@@ -26,7 +28,13 @@ const PostsByTag = () => {
 	return (
 		<main className={styles.main}>
 			<section>
-				<h2 className={styles.sectionTitle}>Posts in {tagFilter}</h2>
+				<h2 className={styles.sectionTitle}>
+					Posts in {tagFilter}
+					<Link class={styles.backLink} to="/">
+						<RiArrowLeftLine size={18} />
+						Back to all posts
+					</Link>
+				</h2>
 				<div className={styles.posts}>
 					{postsByTag &&
 						postsByTag.map((post) => <PostCard key={post._id} post={post} />)}
