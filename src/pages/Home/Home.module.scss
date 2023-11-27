@@ -4,6 +4,7 @@
 	padding: calc($padding-4 * 2);
 	display: grid;
 	gap: calc($padding-4 * 2);
+	flex-grow: 1;
 }
 .sectionTitle {
 	@include themify($themes) {
