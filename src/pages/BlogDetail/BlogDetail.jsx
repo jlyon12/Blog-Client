@@ -53,7 +53,7 @@ const BlogDetail = () => {
 
 			const json = await res.json();
 			if (res.ok) {
-				dispatch({ type: 'SET_BOOKMARKS', payload: json.data.bookmarks });
+				dispatch({ type: 'SET_BOOKMARKS', payload: json.data });
 			}
 		};
 		if (user) {
