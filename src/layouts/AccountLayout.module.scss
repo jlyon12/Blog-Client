@@ -17,6 +17,7 @@
 }
 .nav {
 	display: flex;
+
 	justify-content: center;
 	padding: $padding-4;
 	border-radius: 8px;
@@ -25,7 +26,9 @@
 	}
 	ul {
 		@include list-reset;
-		@include list-horizontal(calc($gap-4 * 2));
+		@include list-horizontal(calc($gap-3 * 2));
+		flex-wrap: wrap;
+		justify-content: center;
 		a {
 			@include nav-link;
 			font-weight: $fw-semibold;
