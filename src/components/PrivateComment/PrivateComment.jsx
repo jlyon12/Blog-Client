@@ -3,26 +3,33 @@ import propTypes from 'prop-types';
 import styles from './PrivateComment.module.scss';
 import { Link } from 'react-router-dom';
 import useAuthContext from 'src/hooks/useAuthContext';
+import useConfirm from 'src/hooks/useConfirm';
+
 const PrivateComment = ({ comment, setComments }) => {
 	const { user } = useAuthContext();
-
+	const { isConfirmed } = useConfirm();
 	const deleteComment = async (comment) => {
-		const res = await fetch(
-			`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/users/${user.id}/comments/${
-				comment._id
-			}`,
-			{
-				method: 'DELETE',
-				headers: {
-					Authorization: `Bearer ${user.token}`,
-				},
-			}
+		const confirmed = await isConfirmed(
+			'Delete Comment? This action can not be undone.'
 		);
-		const json = await res.json();
-		if (res.ok) {
-			setComments((prev) =>
-				prev.filter((comment) => comment._id !== json.data._id)
+		if (confirmed) {
+			const res = await fetch(
+				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/users/${
+					user.id
+				}/comments/${comment._id}`,
+				{
+					method: 'DELETE',
+					headers: {
+						Authorization: `Bearer ${user.token}`,
+					},
+				}
 			);
+			const json = await res.json();
+			if (res.ok) {
+				setComments((prev) =>
+					prev.filter((comment) => comment._id !== json.data._id)
+				);
+			}
 		}
 	};
 

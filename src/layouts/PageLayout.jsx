@@ -3,6 +3,7 @@ import useDarkModeContext from 'src/hooks/useDarkModeContext';
 import ScrollToTop from 'src/utils/ScrollToTop';
 import Header from 'src/components/Header/Header';
 import Footer from 'src/components/Footer/Footer';
+import ConfirmModal from 'src/components/ConfirmModal/ConfirmModal';
 import styles from './PageLayout.module.scss';
 const PageLayout = () => {
 	const { darkMode } = useDarkModeContext();
@@ -13,6 +14,7 @@ const PageLayout = () => {
 				<Header />
 				<Outlet />
 				<Footer />
+				<ConfirmModal />
 			</div>
 		</div>
 	);

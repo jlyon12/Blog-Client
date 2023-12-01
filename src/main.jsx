@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import Router from 'src/router';
 import { DarkModeContextProvider } from './context/DarkModeContext';
 import { AuthContextProvider } from 'src/context/AuthContext';
-import { BookmarksContextProvider } from './context/BookmarksContext';
-
+import { BookmarksContextProvider } from 'src/context/BookmarksContext';
+import { ConfirmContextProvider } from 'src/context/ConfirmContext';
 import 'src/sass/index.scss';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -12,7 +12,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 		<DarkModeContextProvider>
 			<AuthContextProvider>
 				<BookmarksContextProvider>
-					<Router />
+					<ConfirmContextProvider>
+						<Router />
+					</ConfirmContextProvider>
 				</BookmarksContextProvider>
 			</AuthContextProvider>
 		</DarkModeContextProvider>
