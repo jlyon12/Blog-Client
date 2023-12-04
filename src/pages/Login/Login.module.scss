@@ -1,9 +1,11 @@
 @use '/src/sass/index.scss' as *;
 
 .main {
-	display: grid;
-	place-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	flex-grow: 1;
+	justify-content: center;
 }
 .form {
 	display: grid;
