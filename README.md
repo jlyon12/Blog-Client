@@ -14,20 +14,20 @@
 <div align="center">
 
 <h3 align="center">Blog-Client</h3>
- <a href="https://github.com/probableactions/Blog-Client">
+ <a href="https://github.com/jlyon12/Blog-Client">
     <img src="screenshots/header_logo.jpg" alt="Logo" >
   </a>
   <p align="center">
     A simple blog consumption site supported by a REST API.
     <br />
-    <a href="https://github.com/probableactions/Blog-Client"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/jlyon12/Blog-Client"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://blog-client-hazel.vercel.app/">View Demo</a>
     ·
-    <a href="https://github.com/probableactions/Blog-Client/issues">Report Bug</a>
+    <a href="https://github.com/jlyon12/Blog-Client/issues">Report Bug</a>
     ·
-    <a href="https://github.com/probableactions/Blog-Client/issues">Request Feature</a>
+    <a href="https://github.com/jlyon12/Blog-Client/issues">Request Feature</a>
   </p>
 </div>
 
@@ -78,8 +78,8 @@ The client site allows for anyone to access blog posts and create their own acco
 
 ## Related Repos
 
-- [Blog-CMS](https://github.com/probableactions/Blog-CMS)
-- [Blog-API](https://github.com/probableactions/Blog-API)
+- [Blog-CMS](https://github.com/jlyon12/Blog-CMS)
+- [Blog-API](https://github.com/jlyon12/Blog-API)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -87,7 +87,7 @@ The client site allows for anyone to access blog posts and create their own acco
 
 ## Roadmap
 
-See the [open issues](https://github.com/probableactions/Blog-Client/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/jlyon12/Blog-Client/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -120,7 +120,7 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 
 ## Contact
 
-Project Link: [https://github.com/probableactions/Blog-Client](https://github.com/probableactions/Blog-Client)
+Project Link: [https://github.com/jlyon12/Blog-Client](https://github.com/jlyon12/Blog-Client)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -138,16 +138,16 @@ Project Link: [https://github.com/probableactions/Blog-Client](https://github.co
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/probableactions/Blog-Client.svg?style=for-the-badge
-[contributors-url]: https://github.com/probableactions/Blog-Client/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/probableactions/Blog-Client.svg?style=for-the-badge
-[forks-url]: https://github.com/probableactions/Blog-Client/network/members
-[stars-shield]: https://img.shields.io/github/stars/probableactions/Blog-Client.svg?style=for-the-badge
-[stars-url]: https://github.com/probableactions/Blog-Client/stargazers
-[issues-shield]: https://img.shields.io/github/issues/probableactions/Blog-Client.svg?style=for-the-badge
-[issues-url]: https://github.com/probableactions/Blog-Client/issues
-[license-shield]: https://img.shields.io/github/license/probableactions/Blog-Client.svg?style=for-the-badge
-[license-url]: https://github.com/probableactions/Blog-Client/blob/master/LICENSE.md
+[contributors-shield]: https://img.shields.io/github/contributors/jlyon12/Blog-Client.svg?style=for-the-badge
+[contributors-url]: https://github.com/jlyon12/Blog-Client/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/jlyon12/Blog-Client.svg?style=for-the-badge
+[forks-url]: https://github.com/jlyon12/Blog-Client/network/members
+[stars-shield]: https://img.shields.io/github/stars/jlyon12/Blog-Client.svg?style=for-the-badge
+[stars-url]: https://github.com/jlyon12/Blog-Client/stargazers
+[issues-shield]: https://img.shields.io/github/issues/jlyon12/Blog-Client.svg?style=for-the-badge
+[issues-url]: https://github.com/jlyon12/Blog-Client/issues
+[license-shield]: https://img.shields.io/github/license/jlyon12/Blog-Client.svg?style=for-the-badge
+[license-url]: https://github.com/jlyon12/Blog-Client/blob/master/LICENSE.md
 [product-screenshot]: screenshots/homepage.png
 [MongoDB]: https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white
 [MongoDB-url]: https://www.mongodb.com/
